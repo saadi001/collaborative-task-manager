@@ -28,8 +28,7 @@ const YourTask = () => {
                     refetch()
                 })
         }
-    return (
-        <div className='mx-5 sm:mx-12 lg:max-w-4xl lg:mx-auto xl:max-w-5xl  pt-5'>
+    return (<div className='mx-5 sm:mx-12 lg:max-w-4xl lg:mx-auto xl:max-w-5xl  pt-5'>
                <p className='text-lg font-semibold text-slate-800 mb-3'>Tasks</p>                         
 
                <div className='overflow-x-auto rounded border border-gray-200'>
@@ -72,6 +71,7 @@ const YourTask = () => {
                     </table>
                </div>
           </div>
+        
     );
 };
 

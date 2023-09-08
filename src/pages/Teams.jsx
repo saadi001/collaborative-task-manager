@@ -19,6 +19,7 @@ const Teams = () => {
     const handleModal = (team) => {
         document.getElementById('addTaskModal').showModal();
         setTeamInfo(team)
+        refetch()
     }
 
     return (
@@ -30,7 +31,7 @@ const Teams = () => {
                         <div>Team: {team.teamName}</div>
                         <div className='text-sm font-normal'>Author: {team.author}</div>
                         </div>
-                        <div><button className="btn py-1 px-3 bg-slate-400 rounded-sm text-white/75" onClick={()=>handleModal(team)}>create task</button></div>
+                        <div><button className="btn py-1 px-3 bg-slate-400 rounded-sm text-white/90" onClick={()=>handleModal(team)}>create task</button></div>
                     </div>
                     <AddTaskModal team={teamInfo}></AddTaskModal>
                     <table key={i} className='w-full text-sm divide-y divide-gray-300'>                        

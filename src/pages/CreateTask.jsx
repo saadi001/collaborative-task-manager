@@ -39,12 +39,12 @@ const CreateTask = () => {
   };
   return (
     <>
-      <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 my-12 border">
+      <section className="max-w-4xl p-6 sm:fmx-auto bg-white rounded-md shadow-md dark:bg-gray-800 my-12 border mx-2">
         <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">
           Create new task
         </h2>
 
-        <form onSubmit={handleSubmit(handleCreateTask)}>
+        <form onSubmit={handleSubmit(handleCreateTask)} className="">
           <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div className="grid grid-cols-1 gap-6">             
 
