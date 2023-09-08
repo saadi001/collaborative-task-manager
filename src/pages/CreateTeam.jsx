@@ -15,7 +15,7 @@ const CreateTeam = () => {
                 tasks: []
             }
             console.log(team);
-            fetch("http://localhost:5000/createTeam", {
+            fetch("https://backend-gamma-lac.vercel.app/createTeam", {
                 method: "POST",
                 headers: {
                     "content-type" : "application/json"

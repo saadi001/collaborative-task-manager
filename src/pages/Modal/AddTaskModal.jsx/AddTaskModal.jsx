@@ -1,14 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
-const AddTaskModal = ({ team }) => {
+const AddTaskModal = ({ team, refetch }) => {
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
+  const navigate = useNavigate()
 
   const handleTask = (data) => {
     const { title, level, description, date, assignTo } = data;
@@ -20,7 +22,7 @@ const AddTaskModal = ({ team }) => {
         assignTo,
         progress: "pending",
       };
-      fetch(`http://localhost:5000/addTaskInTeam/${team._id}`, {
+      fetch(`https://backend-gamma-lac.vercel.app/addTaskInTeam/${team._id}`, {
         method: "PATCH",
         headers: {
             "content-type":"application/json"
@@ -32,6 +34,8 @@ const AddTaskModal = ({ team }) => {
         if (result.modifiedCount === 1) {
           toast.success("task created successfully.");
           reset();
+          navigate("/teams")
+          refetch()
         }
       })
   }

@@ -6,10 +6,11 @@ import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 const Teams = () => {
     const [teamInfo, setTeamInfo] = useState(null)
     const {user} = useContext(AuthContext)
+    
     const {data:teams = [], isLoading, refetch } = useQuery({
         queryKey : ["teams"],
         queryFn: async () =>{
-            const res = await fetch(`http://localhost:5000/teamsOnly/${user.email}`)
+            const res = await fetch(`https://backend-gamma-lac.vercel.app/teamsOnly/${user.email}`)
             const data = await res.json()
             console.log(data);
             return data;
@@ -33,7 +34,7 @@ const Teams = () => {
                         </div>
                         <div><button className="btn py-1 px-3 bg-slate-400 rounded-sm text-white/90" onClick={()=>handleModal(team)}>create task</button></div>
                     </div>
-                    <AddTaskModal team={teamInfo}></AddTaskModal>
+                    <AddTaskModal team={teamInfo} refetch={refetch}></AddTaskModal>
                     <table key={i} className='w-full text-sm divide-y divide-gray-300'>                        
                         <thead className='bg-gray-200 font-normal py-3'>
                              <tr className=''>

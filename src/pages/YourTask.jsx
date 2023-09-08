@@ -5,7 +5,7 @@ const YourTask = () => {
         const {data:tasks = [], isLoading, refetch } = useQuery({
                 queryKey : ["tasks"],
                 queryFn: async () =>{
-                    const res = await fetch('http://localhost:5000/tasks')
+                    const res = await fetch('https://backend-gamma-lac.vercel.app/tasks')
                     const data = await res.json()
                     console.log(data);
                     return data;
@@ -15,7 +15,7 @@ const YourTask = () => {
         const handleProgressChange = (id, newProgress) => {
                 console.log(id, newProgress);
                 const progress = {progress: newProgress}
-                fetch(`http://localhost:5000/updateTask/${id}`, {
+                fetch(`https://backend-gamma-lac.vercel.app/updateTask/${id}`, {
                     method: "PATCH",
                      headers: {
                         "content-type": "application/json"

@@ -21,7 +21,7 @@ const CreateTask = () => {
       assignTo,
       progress: "pending",
     };
-    fetch("http://localhost:5000/createTask", {
+    fetch("https://backend-gamma-lac.vercel.app/createTask", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -39,7 +39,7 @@ const CreateTask = () => {
   };
   return (
     <>
-      <section className="max-w-4xl p-6 sm:fmx-auto bg-white rounded-md shadow-md dark:bg-gray-800 my-12 border mx-2">
+      <section className="max-w-4xl p-6 sm:mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 my-12 border mx-2">
         <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">
           Create new task
         </h2>
