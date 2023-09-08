@@ -1,15 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import AddTaskModal from './Modal/AddTaskModal.jsx/AddTaskModal';
+import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 
 const Teams = () => {
     const [teamInfo, setTeamInfo] = useState(null)
+    const {user} = useContext(AuthContext)
     const {data:teams = [], isLoading, refetch } = useQuery({
         queryKey : ["teams"],
         queryFn: async () =>{
-            const res = await fetch('http://localhost:5000/teams')
+            const res = await fetch(`http://localhost:5000/teamsOnly/${user.email}`)
             const data = await res.json()
-            // console.log(data);
+            console.log(data);
             return data;
         }    
     })
@@ -21,7 +23,7 @@ const Teams = () => {
 
     return (
         <div className='mx-5 sm:mx-12 lg:max-w-4xl lg:mx-auto xl:max-w-5xl  pt-5'>
-               <p className='text-lg font-semibold text-slate-800 mb-3'>Teams</p>                         
+               <p className='text-lg font-semibold text-slate-800 mb-3'>Teams <span className='text-sm font-normal'>(you can see the teams where you are member or author)</span></p>                         
                 {teams.map((team, i) => <div key={team._id} className='overflow-x-auto rounded border border-gray-200 mb-12 '>
                     <div className='bg-gray-200 font-semibold py-2 px-4 flex justify-between items-center'>
                         <div>

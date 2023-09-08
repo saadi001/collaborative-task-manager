@@ -1,15 +1,21 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const {providerLogin} = useContext(AuthContext);
     const provider = new GoogleAuthProvider()
+    const navigate = useNavigate()
+     const location = useLocation()
+
+     const from = location.state?.from?.pathname || '/'
 
     const googlePopupLogin = (provider) =>{
         providerLogin(provider)
         .then(result => {
             const user = result.user;
+            navigate(from, {replace: true})
             console.log(user);
         })
         .catch(error => {

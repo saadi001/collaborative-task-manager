@@ -7,6 +7,7 @@ import NotFound from "../../pages/NotFound";
 import YourTask from "../../pages/YourTask";
 import CreateTeam from "../../pages/CreateTeam";
 import Teams from "../../pages/Teams";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -19,19 +20,19 @@ export const router = createBrowserRouter([
         },
         {
             path: "/createTask",
-            element: <CreateTask></CreateTask>
+            element: <PrivateRoute><CreateTask></CreateTask></PrivateRoute>
         },
         {
             path: "/yourTask",
-            element: <YourTask></YourTask>
+            element: <PrivateRoute><YourTask></YourTask></PrivateRoute>
         },
         {
           path: "/createTeam",
-          element: <CreateTeam></CreateTeam>
+          element: <PrivateRoute><CreateTeam></CreateTeam></PrivateRoute>
         },
         {
           path: "/teams",
-          element: <Teams></Teams>
+          element: <PrivateRoute><Teams></Teams></PrivateRoute>
         },
         {
           path: "/login",

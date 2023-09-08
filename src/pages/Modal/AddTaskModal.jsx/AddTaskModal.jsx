@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { Navigate } from "react-router-dom";
 
 const AddTaskModal = ({ team }) => {
   const {
@@ -33,7 +32,6 @@ const AddTaskModal = ({ team }) => {
         if (result.modifiedCount === 1) {
           toast.success("task created successfully.");
           reset();
-          Navigate("/")
         }
       })
   }
